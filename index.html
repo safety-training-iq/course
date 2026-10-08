@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>اختبار السلامة المهنية للإداريين</title>
+<style>
+:root{--bg:#eef2f6;--card:#fff;--ink:#1b2a3a;--mut:#5d6b7a;--line:#d3dbe4;--acc:#f2b705;--ok:#1f8a4c;--okbg:#e2f4ea;--bad:#c0392b;--badbg:#fbe6e3;box-sizing:border-box;padding:env(safe-area-inset-top,0px) 0 env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121b26;--card:#1b2735;--ink:#e8eef5;--mut:#9fb0c1;--line:#2e3d4e;--okbg:#17372a;--badbg:#412020;--ok:#4fc983;--bad:#ff7b6b}}
+:root[data-theme="dark"]{--bg:#121b26;--card:#1b2735;--ink:#e8eef5;--mut:#9fb0c1;--line:#2e3d4e;--okbg:#17372a;--badbg:#412020;--ok:#4fc983;--bad:#ff7b6b}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Tahoma,'Segoe UI',Arial,sans-serif;line-height:1.7;font-size:17px}
+main{max-width:640px;margin:0 auto;padding:16px}
+h1{font-size:22px;font-weight:800;margin:6px 0 2px}
+.sub{color:var(--mut);font-size:14px;margin:0 0 14px}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.tabs button{font:inherit;font-size:14px;padding:6px 12px;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:20px;cursor:pointer}
+.tabs button.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.bar{height:6px;background:var(--line);border-radius:3px;overflow:hidden;margin-bottom:6px}
+.bar i{display:block;height:100%;background:var(--acc);transition:width .25s}
+.meta{display:flex;justify-content:space-between;color:var(--mut);font-size:14px;margin-bottom:12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px}
+.q{font-size:19px;font-weight:700;margin:0 0 14px}
+.opt{display:block;width:100%;text-align:right;font:inherit;padding:12px 14px;margin:0 0 8px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;cursor:pointer}
+.opt:focus-visible,.go:focus-visible,.tabs button:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+.opt.ok{border-color:var(--ok);background:var(--okbg)}
+.opt.bad{border-color:var(--bad);background:var(--badbg)}
+.opt.sel{border-color:var(--acc);background:rgba(242,183,5,.2)}
+.opt:disabled{cursor:default;color:var(--ink)}
+.fb{margin:10px 0 0;padding:10px 12px;border-radius:10px;font-weight:700}
+.fb.ok{background:var(--okbg);color:var(--ok)}
+.fb.bad{background:var(--badbg);color:var(--bad)}
+.go{font:inherit;font-weight:700;margin-top:14px;padding:11px 22px;border:0;border-radius:10px;background:var(--acc);color:#1b2a3a;cursor:pointer}
+.blank{display:inline-block;min-width:70px;border-bottom:2px solid var(--acc);text-align:center}
+.score{font-size:40px;font-weight:800;margin:0}
+.rev{margin:10px 0;padding:10px 12px;border-right:4px solid var(--bad);background:var(--badbg);border-radius:8px;font-size:15px}
+.rev b{color:var(--ok)}
+</style>
+<link rel="manifest" href="manifest.webmanifest"><meta name="theme-color" content="#1b2a3a"><link rel="apple-touch-icon" href="icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="السلامة المهنية"><style>.nv{display:flex;gap:6px;max-width:640px;margin:0 auto;padding:10px 16px 0}.nv a{flex:1;text-align:center;text-decoration:none;font-size:14px;padding:8px;border-radius:10px;border:1.5px solid #8885;color:inherit}.nv a.on{background:#1b2a3a;color:#fff;border-color:#1b2a3a}</style><style>.ins{display:block;overflow:hidden;max-width:640px;margin:0 auto;padding:12px 16px 0}.ins img{display:block;width:68px;height:68px;border-radius:50%;object-fit:cover;border:3px solid #f2b705;background:#ccc}.ins td{color:inherit}.ins b{display:block;font-size:18px;line-height:1.5}.ins span{display:block;font-size:12.5px;opacity:.75;line-height:1.5}</style></head>
+<body><header class="ins" style="text-align:center"><img alt="الأستاذ أكرم جلوب" src="data:image/jpeg;base64,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" style="display:block;margin:0 auto 6px;width:84px;height:84px"><b>إعداد الأستاذ: أكرم جلوب</b><span>قسم دورات السلامة – مركز تدريب بغداد</span></header><nav class="nv"><a href="index.html" class="on">الاختبار</a><a href="cards.html" class="">البطاقات</a></nav>
+<main>
+<h1>اختبار السلامة المهنية للإداريين</h1>
+<p class="sub">دائرة التدريب وبحوث الطاقة – مركز تدريب بغداد</p>
+<div class="tabs" id="tabs"></div>
+<div id="app"></div>
+</main>
+<script>
+const TF=['صح','خطأ'];
+// [نوع، سؤال، خيارات، رقم الإجابة الصحيحة]  m=اختيار، t=صح وخطأ، f=فراغ
+const Q=[
+['m','السلامة المهنية هي مجموعة الإجراءات التي تؤدي إلى:',['توفير الحماية المهنية للعاملين والحد من خطر المعدات والآلات','زيادة ساعات العمل','تقليل عدد الموظفين','تغيير مكان العمل'],0],
+['m','الصحة المهنية هي العلم الذي يهتم بـ:',['الحفاظ على سلامة وصحة الإنسان ومنع الخسائر في الأرواح','تصليح الأجهزة','تنظيم الدوام','شراء المعدات'],0],
+['m','المرض المهني هو كل مرض يصاب به العامل بسبب:',['عوامل بيئة العمل أو عدم التوافق بين العامل وعمله','الوراثة فقط','الحوادث المرورية','السفر'],0],
+['m','الفحص الطبي الابتدائي يُجرى:',['عند دخول الخدمة','عند الإحالة للتقاعد','كل شهر','بعد الحادث فقط'],0],
+['m','الهدف من الفحص الطبي الدوري:',['الاكتشاف المبكر للأمراض المهنية','منح الإجازات','تقييم الراتب','تغيير الوظيفة'],0],
+['m','الفحص المناسب للعاملين المعرضين للضوضاء:',['قياس حدة السمع','أشعة الصدر','قياس الرصاص في الدم','فحص النظر'],0],
+['m','الفحص الدوري يُوصى به لمن تعدّوا سنًا معينة، مثلًا:',['45 سنة','25 سنة','30 سنة','18 سنة'],0],
+['m','المسافة المناسبة بين العين وشاشة الحاسوب:',['40 – 60 سم','10 – 20 سم','100 سم','5 سم'],0],
+['m','يُفضَّل أن تكون الشاشة بالنسبة لمستوى العين:',['أقل من مستوى العين','أعلى بكثير','في الأرض','على الجانب'],0],
+['m','زاوية الكوع المثلى أثناء الكتابة على لوحة المفاتيح:',['90 – 100 درجة','30 درجة','180 درجة','45 درجة'],0],
+['m','الاستراحة أثناء الأعمال المكتبية تكون:',['كل نصف ساعة لمدة 10 دقائق','كل 5 ساعات','مرة واحدة باليوم','لا حاجة لها'],0],
+['m','للحد من إجهاد العينين يُنصح بالنظر بعيدًا عن الشاشة:',['عشر ثوانٍ كل عشر دقائق','دقيقة كل ساعة','ثانية كل ساعة','لا حاجة لذلك'],0],
+['m','ارتفاع الكرسي (من المقعد إلى الأرض) يساوي المسافة بين:',['مفصل الركبة والقدم','الحوض والصدر','الكتف والكوع','الرقبة والرأس'],0],
+['m','المطفأة المناسبة لحرائق أجهزة الحاسوب:',['ثاني أوكسيد الكاربون CO2','رغوة','كيمياويات جافة','ماء'],0],
+['m','الجدران التي تفصل غرفة الحاسبات عن غرف التخزين يجب أن تقاوم النيران لمدة:',['ساعتين على الأقل','10 دقائق','ساعة إلا ربع','يوم كامل'],0],
+['m','متى يستوجب الألم التدخل الطبي؟',['إذا استمر وثبت لمدة أكثر من أسبوع','بعد يوم واحد','بعد ساعة','لا يستوجب أبدًا'],0],
+
+['t','يجوز القراءة أثناء المشي في المكتب.',TF,1],
+['t','يجب إغلاق أدراج المكاتب ودواليب الملفات بعد انتهاء استعمالها مباشرة.',TF,0],
+['t','يجوز استخدام السخانات الكهربائية لإعداد الشاي والقهوة في المكتب.',TF,1],
+['t','يجوز محاولة إصلاح الأجهزة الكهربائية بنفسك.',TF,1],
+['t','يجوز نزع الحواجز الواقية عن الآلة لأنها ليست جزءًا منها.',TF,1],
+['t','يجوز الوقوف على الكراسي الدوارة للوصول إلى الرفوف العليا.',TF,1],
+['t','يُوصى باستخدام الرغوة والكيمياويات الجافة لإطفاء حرائق أجهزة الحاسوب.',TF,1],
+['t','غاز ثاني أوكسيد الكاربون أثقل من الهواء ولا يترك أثرًا بعد الإطفاء.',TF,0],
+['t','يجوز وضع جهاز الهاتف بين الكتف والرأس أثناء الحديث.',TF,1],
+['t','يجوز وضع أوعية السوائل والمشروبات بجانب الآلات أو فوقها.',TF,1],
+['t','يجب فحص الفلاشات والهارديسك الخارجي قبل توصيلها بالحاسب.',TF,0],
+['t','يجوز تركيب برامج تجريبية أو غير موثقة على جهاز العمل.',TF,1],
+['t','يجب إبقاء مخارج وممرات الطوارئ غير معرقلة.',TF,0],
+['t','يجب الإبلاغ فورًا عن أية حالات غير مأمونة في أماكن العمل.',TF,0],
+
+['f','الفحص الطبي ____ يُجرى عند دخول الخدمة.',['الابتدائي','الدوري','النهائي','العام'],0],
+['f','الغاز المستخدم لإطفاء حرائق الحاسوب هو ____.',['ثاني أوكسيد الكاربون','الأوكسجين','الهيدروجين','النتروجين'],0],
+['f','يوجد بين كل فقرة وأخرى وسادة تسمى ____.',['الغضروف','الوتر','الرباط','العضلة'],0],
+['f','ترتبط العضلات بالفقرات بواسطة أربطة وأنسجة تسمى ____.',['أوتار','أعصاب','شرايين','أوردة'],0],
+['f','أمراض مثل ضغط الدم تنتشر أكثر بين العاملين في المهن ____.',['الإدارية','الحرفية','الزراعية','الميدانية'],0],
+['f','فحوص ____ (Screening tests) بسيطة وسريعة وغير مكلفة لاكتشاف المصابين.',['الفرز','الدم','الأشعة','السمع'],0],
+['f','يجب تجنب ____ المنعكس عن الشاشة عند العمل على الكمبيوتر.',['الوهج','الصوت','الغبار','الحرارة'],0],
+['f','المعلومات المختزنة تُطبع على ورق قابل ____، وهنا أولى مخاطر الحريق.',['للاشتعال','للتلف','للبلل','للطي'],0]
+];
+
+// أسئلة التعداد: E(سؤال، [الصحيح]، [مشتتات]) تُخلط الخيارات تلقائيًا
+const E=(q,c,d)=>{const a=[...c.map(x=>[x,1]),...d.map(x=>[x,0])].sort(()=>Math.random()-.5);return ['e',q,a.map(x=>x[0]),a.map((x,k)=>x[1]?k:-1).filter(k=>k>=0)];};
+Q.push(
+E('عدّد أنشطة وفحوصات برنامج الصحة والسلامة المهنية (اختر 4):',['الفحص الطبي الابتدائي','مسح وتقييم بيئة العمل','الفحص الطبي الدوري','فحوص طبية أخرى في مناسبات مختلفة'],['فحص الأسنان السنوي','فحص السيارات']),
+E('وظائف الفحص الطبي الابتدائي (اختر 3):',['تقييم الحالة الصحية للمتقدم وتسجيلها','تقييم قدراته البدنية والنفسية لوضعه في العمل المناسب','اكتشاف الأمراض غير المعروفة للمتقدم'],['تحديد الراتب','اختيار مكان السكن']),
+E('من المسؤول عن مسح وتقييم بيئة العمل؟ (اختر 2):',['طبيب الصحة المهنية','أخصائي السلامة المهنية'],['المحاسب','مسؤول الموارد البشرية']),
+E('أمثلة الفحوص الدورية حسب نوع التعرض (اختر 3):',['أشعة الصدر للمعرضين للأتربة','قياس حدة السمع للمعرضين للضوضاء','قياس الرصاص في الدم للمعرضين لأبخرة الرصاص'],['فحص النظر لكل الموظفين','فحص السكر للجميع']),
+E('عدّد الأمراض الشائعة لمستخدمي الحاسوب (اختر الصحيح):',['آلام العمود الفقري والرقبة','جفاف واحمرار العينين','التهاب ملتحمة العين','متلازمة نفق الرسغ','جلطات الأوعية الدموية العميقة','الأمراض القلبية والوعائية'],['الملاريا','الإنفلونزا الموسمية']),
+E('الحالات التي تستوجب التدخل الطبي لآلام العضلات والظهر (اختر 3):',['استمرار الألم أكثر من أسبوع','انتقال الألم من العنق إلى الكتفين والذراعين أو من الظهر إلى الفخذين','وجود تخدير أو تنميل في الأصابع'],['ألم خفيف لمدة يوم','تعب بعد الغداء']),
+E('عدّد أهمية الحفاظ على وضعية جسم صحيحة (اختر 4):',['تخفيف آلام الجسم الناتجة عن الوضعيات الخاطئة','تحسين وظيفة العضلات وحركة المفاصل والدورة الدموية','تخفيف الضغط على أعضاء الجسم','إعطاء مظهر جيد يحسّن الثقة بالنفس'],['زيادة الوزن','تقليل ساعات الدوام']),
+E('عدّد أسباب آلام العمود الفقري (اختر 6):',['الوقفات غير الصحيحة','القوة المتورطة (الشد فوق مستوى الرأس)','العادات السيئة (ضعف عضلات الظهر وترهل البطن)','الجلسات غير الصحية','الوزن الزائد','الإجهاد والتوتر'],['شرب الماء','النوم الكافي']),
+E('وظائف العمود الفقري (اختر 2):',['مساعدتك على الجلوس والقعود والمشي','حماية الحبل الشوكي'],['هضم الطعام','تنقية الدم']),
+E('الأمور التي تحد من حرائق الحاسب الآلي (اختر 5):',['اختيار الموقع','الإنشاءات','أجهزة كشف الحريق','أجهزة إخماد الحريق','الترتيب والنظافة'],['زيادة عدد الموظفين']),
+E('مميزات غاز ثاني أوكسيد الكاربون في الإطفاء (اختر 5):',['أثقل من الهواء بمرة ونصف','لا يشتعل ولا يساعد على الاشتعال','لا يترك أثرًا بعد الإطفاء','عديم اللون والطعم والرائحة','يذوب في الماء مكونًا حامض الكربونيك'],['له رائحة نفاذة','أخف من الهواء']),
+E('اشتراطات السلامة بمكان العمل (اختر 5):',['سلامة الأرضيات','التوصيلات الكهربائية','مخارج النجاة','وسائل الإنذار ومكافحة الحريق','معدات الإسعافات الأولية'],['عدد النوافذ']),
+E('عدّد المواد القابلة للاشتعال اللازمة للحاسبات (اختر 4):',['الورق','البطاقات','المواد البلاستيكية المختلفة','الميكروفيلم'],['الزجاج','الحديد']),
+E('نصائح لسلامة العين أمام الشاشة (اختر 5):',['إعطاء العينين راحة بالنظر بعيدًا','التغميض المتكرر لترطيب العين','إبعاد الشاشة 40 – 60 سم','جعل أعلى الشاشة بمستوى العينين','تنظيف الشاشة من الغبار'],['رفع سطوع الشاشة للأقصى','إطفاء إضاءة الغرفة']),
+E('مفردات الدورة (اختر 5):',['مقدمة عن السلامة الصناعية','السلامة في الأعمال المكتبية','السلامة عند استخدام الحاسوب','سلامة العمود الفقري','السيطرة على الحرائق في المكاتب والحاسوب'],['الإسعافات الجراحية'])
+);
+const NAMES={all:'الكل',m:'اختيار من متعدد',t:'صح وخطأ',f:'ملء الفراغ',e:'تعداد'};
+const LBL={m:'اختيار من متعدد',t:'صح أم خطأ؟',f:'أكمل الفراغ',e:'تعداد: اختر كل الإجابات الصحيحة'};
+let sel=new Set(),list=[],i=0,score=0,wrong=[],done=false,mode='all';
+const $=id=>document.getElementById(id);
+function tabs(){ $('tabs').innerHTML=Object.keys(NAMES).map(k=>`<button class="${k===mode?'on':''}" onclick="start('${k}')">${NAMES[k]}</button>`).join('');}
+// خلط الخيارات في كل مرة حتى لا يثبت موقع الجواب الصحيح (ما عدا صح وخطأ)
+const sh=q=>{if(q[0]==='t')return q;const c=q[0]==='e'?q[3]:[q[3]];const a=q[2].map((o,k)=>[o,c.includes(k)]).sort(()=>Math.random()-.5);const idx=a.map((x,k)=>x[1]?k:-1).filter(k=>k>=0);return [q[0],q[1],a.map(x=>x[0]),q[0]==='e'?idx:idx[0]];};
+function start(k,custom){ mode=k||mode; list=(custom||Q.filter(q=>mode==='all'||q[0]===mode)).map(sh); i=0;score=0;wrong=[];done=false;tabs();show();}
+function show(){
+  if(i>=list.length) return end();
+  const q=list[i];sel=new Set();
+  const text=q[0]==='f'?q[1].replace('____','<span class="blank">&nbsp;&nbsp;&nbsp;&nbsp;</span>'):q[1];
+  $('app').innerHTML=`<div class="bar"><i style="width:${i/list.length*100}%"></i></div>
+  <div class="meta"><span>${LBL[q[0]]}</span><span>${i+1} / ${list.length}</span></div>
+  <div class="card"><p class="q">${text}</p>${q[2].map((o,k)=>`<button class="opt" onclick="${q[0]==='e'?'tog('+k+',this)':'pick('+k+')'}">${o}</button>`).join('')}<div id="fb">${q[0]==='e'?'<button class="go" onclick="check()">تأكيد الإجابة</button>':''}</div></div>`;
+}
+const ans=q=>q[0]==='e'?q[3].map(c=>q[2][c]).join('، '):q[2][q[3]];
+function tog(k,b){sel.has(k)?sel.delete(k):sel.add(k);b.classList.toggle('sel');}
+function check(){
+  const q=list[i],c=q[3],ok=sel.size===c.length&&c.every(x=>sel.has(x));
+  document.querySelectorAll('.opt').forEach((x,n)=>{x.disabled=true;x.classList.remove('sel');if(c.includes(n))x.classList.add('ok');else if(sel.has(n))x.classList.add('bad');});
+  if(ok)score++;else wrong.push(q);
+  $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?'إجابة صحيحة ✓':'إجابة ناقصة أو خاطئة. الصحيح: '+ans(q)}</div><button class="go" onclick="i++;show()">${i+1<list.length?'السؤال التالي':'عرض النتيجة'}</button>`;
+  $('fb').querySelector('.go').focus();
+}
+function pick(k){
+  const q=list[i],ok=k===q[3],b=document.querySelectorAll('.opt');
+  b.forEach((x,n)=>{x.disabled=true;if(n===q[3])x.classList.add('ok');});
+  if(!ok){b[k].classList.add('bad');wrong.push(q);}else score++;
+  $('fb').innerHTML=`<div class="fb ${ok?'ok':'bad'}">${ok?'إجابة صحيحة ✓':'إجابة خاطئة. الصحيح: '+ans(q)}</div><button class="go" onclick="i++;show()">${i+1<list.length?'السؤال التالي':'عرض النتيجة'}</button>`;
+  $('fb').querySelector('.go').focus();
+}
+function end(){
+  const n=list.length;
+  $('app').innerHTML=`<div class="card"><p class="score">${score} / ${n}</p>
+  <p>${wrong.length?'راجع الأسئلة التي أخطأت بها:':'ممتاز، كل الإجابات صحيحة.'}</p>
+  ${wrong.map(q=>`<div class="rev">${q[1]}<br><b>الجواب: ${ans(q)}</b></div>`).join('')}
+  ${wrong.length?'<button class="go" onclick="start(mode,wrong.slice())">أعد الأخطاء فقط</button> ':''}
+  <button class="go" onclick="start(mode)">أعد الاختبار</button></div>`;
+}
+start('all');
+</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script></body>
+</html>

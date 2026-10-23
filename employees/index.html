@@ -254,7 +254,7 @@ function buildFilters(){
   const cB={}; DATA.forEach(d=>batchesOf(d).forEach(b=>cB[b]=(cB[b]||0)+1));
   const bl=Object.keys(cB).sort((a,b)=>(BATCHES.indexOf(a)+99*(BATCHES.indexOf(a)<0))-(BATCHES.indexOf(b)+99*(BATCHES.indexOf(b)<0)));
   opts($("fBatch"),"كل الوجبات",bl,cB);
-  $("notice").innerHTML = `<b>تنبيه:</b> هذه هي الوجبات المنجزة إلى الآن فقط (${bl.map(esc).join("، ")})، وسوف تُضاف بقية الوجبات تدريجياً عند إكمالها.`;
+  $("notice").innerHTML = `<b>تنبيه:</b> هذه هي الوجبات المنجزة إلى الآن فقط، وسوف تُضاف بقية الوجبات تدريجياً عند إكمالها.`;
   const cSt=countBy("status"), nIss=DATA.filter(d=>d.issues.length).length;
   const cur=$("fStatus").value;
   $("fStatus").innerHTML = `<option value="">الكل</option>` +

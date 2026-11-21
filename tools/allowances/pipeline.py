@@ -187,7 +187,7 @@ def issues_of(e):
         if prev is not None and st != prev:
             iss.append(f'تسلسل المراحل منقطع ({prev} ثم {st})')
         prev = du
-        if not valid(dt):
+        if dt and not valid(dt):
             iss.append(f'تاريخ العلاوة {dt} غير صحيح')
     if not e['title']:
         iss.append('العنوان الوظيفي فارغ')
@@ -198,12 +198,32 @@ def issues_of(e):
     return iss
 
 
+def apply_patch(emps, patch, batch):
+    """Apply known corrections to a rebuilt batch: replaced allowance lines and added people.
+
+    patch = {"lines": {name: [[stage, due, date], ...]}, "add": [{seq, id, name, section, title, grade, cert, lines, note}]}
+    A line with an empty date means the date is not known; it is not reported as wrong.
+    """
+    def mk(g, ls):
+        return [dict(stage=a, basic=basic(g, a) if g in G else None, due=b, dueSal=basic(g, b) if g in G else None, date=d) for a, b, d in ls]
+    by = {nm(e['name']): e for e in emps}
+    for name, ls in patch.get('lines', {}).items():
+        e = by[nm(name)]
+        e['lines'] = mk(GN.get(e['grade'], e['grade']), ls)
+    for a in patch.get('add', []):
+        e = dict(batch=batch, seq=a['seq'], id=a['id'], name=a['name'], section=a.get('section', ''), title=a['title'],
+                 grade=a['grade'], cert=a['cert'], notes=a.get('note', ''), lines=mk(GN.get(a['grade'], a['grade']), a['lines']))
+        emps.append(e)
+
+
 def main(work, cfg):
     R = collections.defaultdict(list)
     batches = [c['batch'] for c in cfg]
     parsed = {}
     for c in cfg:
         parsed[c['batch']] = parse_xlsx(c['xlsx'], c['batch']) if 'xlsx' in c else parse_git(c['git_xlsx'], c['batch'])
+        if 'patch' in c:
+            apply_patch(parsed[c['batch']], json.load(open(c['patch'], encoding='utf8')), c['batch'])
     json.dump(parsed, open(os.path.join(work, 'parsed.json'), 'w', encoding='utf8'), ensure_ascii=False, default=str)
     recs = []
     for b in batches:

@@ -201,7 +201,8 @@ def issues_of(e):
 def apply_patch(emps, patch, batch):
     """Apply known corrections to a rebuilt batch: replaced allowance lines and added people.
 
-    patch = {"lines": {name: [[stage, due, date], ...]}, "add": [{seq, id, name, section, title, grade, cert, lines, note}]}
+    patch = {"lines": {name: [[stage, due, date], ...]}, "add": [{seq, id, name, section, title, grade, cert, lines, note}],
+             "set": {name: {field: value}}}  (set runs last, so it can also correct added people)
     A line with an empty date means the date is not known; it is not reported as wrong.
     """
     def mk(g, ls):
@@ -214,6 +215,8 @@ def apply_patch(emps, patch, batch):
         e = dict(batch=batch, seq=a['seq'], id=a['id'], name=a['name'], section=a.get('section', ''), title=a['title'],
                  grade=a['grade'], cert=a['cert'], notes=a.get('note', ''), lines=mk(GN.get(a['grade'], a['grade']), a['lines']))
         emps.append(e)
+    for name, kv in patch.get('set', {}).items():
+        by.setdefault(nm(name), next(e for e in emps if nm(e['name']) == nm(name))).update(kv)
 
 
 def main(work, cfg):
